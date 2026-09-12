@@ -84,6 +84,8 @@
   .btn.play{width:48px;height:48px;padding:0;background:var(--us);color:var(--us-ink);border-color:var(--us);box-shadow:0 6px 18px rgba(255,210,51,.28)}
   .btn.play svg{width:20px;height:20px}
   .btn[disabled]{opacity:.3;cursor:default}
+  .btn.spd{height:34px;min-width:44px;padding:0 10px;font-size:12px;font-weight:700;color:var(--muted);position:absolute;right:0}
+  .controls{position:relative}
   .hint{text-align:center;font-size:12px;color:var(--muted);padding:0 14px 16px}
   .hint kbd{font:inherit;background:var(--card2);border:1px solid var(--edge);border-radius:6px;padding:1px 6px;color:var(--text)}
 
@@ -125,6 +127,7 @@
       <button class="btn" id="prev"><svg viewBox="0 0 24 24"><path d="M15.5 5v14L7 12z"/></svg>이전</button>
       <button class="btn play" id="play" aria-label="재생"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg></button>
       <button class="btn" id="next">다음<svg viewBox="0 0 24 24"><path d="M8.5 5v14L17 12z"/></svg></button>
+      <button class="btn spd" id="spd" aria-label="재생 속도">1x</button>
     </div>
         <div class="caption">
           <div class="step-no" id="stepNo"></div>
@@ -267,49 +270,49 @@
 
     { key:'corner-left', tab:'왼쪽 코너킥', title:'왼쪽 코너·킥인: 무조건 두더지',
       players:[P('k',US,'킥'),P('n1',US,'1'),P('n2',US,'2'),P('n3',US,'3'),P('m1',THEM,''),P('m2',THEM,''),P('m3',THEM,''),P('tg',THEM,'골레')],
-      start:{k:[0.6,0.6],n1:[5,6],n2:[9,8],n3:[12.5,9.5], m1:[6.5,3.7],m2:[10.6,6.6],m3:[13.2,7.8],tg:[10,1.4]},
+      start:{k:[0.6,0.6],n1:[5,7],n2:[9,7],n3:[13,7], m1:[5.5,4.6],m2:[9.6,4.8],m3:[13.4,4.8],tg:[10,1.4]},
       ball:[0.6,0.6],
       steps:[
-        {title:'왼쪽 코너는 무조건 두더지', text:'왼쪽에서는 2번이 받아도 <b>슈팅 각이 안 나온다.</b> 그래서 왼쪽 코너·킥인은 고민 없이 <b>두더지</b> 하나. 자리는 킥인에서 가까운 순서로 1, 2, 3번.'},
+        {title:'왼쪽 코너는 무조건 두더지', text:'왼쪽에서는 2번이 받아도 <b>슈팅 각이 안 나온다.</b> 그래서 왼쪽 코너·킥인은 고민 없이 <b>두더지</b> 하나. <b>가로로 한 줄</b>로 서고, 킥인 쪽부터 1, 2, 3번. 상대는 각자 앞에 맨투맨.'},
         {title:'1번이 자기 앞 상대를 스크린', text:'1번이 자기 앞에 붙은 상대를 몸으로 막는다.',
-         move:{n1:[5.4,5.2]}, marks:[{x:2.6,y:6.6,t:'스크린'}]},
+         move:{n1:[5.4,6.2]}, marks:[{x:2.6,y:7.6,t:'스크린'}]},
         {title:'1·2·3번 다 골대 앞으로 들어간다', text:'1번은 막던 상대 힘을 이용해 <b>니어로 튀어나가고</b>, 2번·3번도 <b>같이 골대 앞으로 들어간다.</b>',
-         move:{n1:[7.6,2.4],n2:[9.8,4],n3:[12.2,4.6]}},
+         move:{n1:[7.4,2.6],n2:[9.6,2.4],n3:[12,3.2]}},
         {title:'킥인은 낮고 빠르게 골문 앞으로', text:'킥인 차는 사람은 <b>낮고 빠르게(두더지)</b> 골문 앞으로 깔아준다.',
          ball:[8.8,2.8]},
         {title:'셋 중 먼저 닿는 사람이 슈팅', text:'1·2·3번 다 공 쪽으로 들어가서 <b>먼저 닿는 사람이 발 갖다 대서 슈팅.</b> 누가 차는지 정해두지 않는다.',
-         move:{n1:[8,2.6],n2:[9.6,3.4],n3:[11.2,3.8]}, ball:[10.2,0.4], lines:[[[8.8,2.8],10.2,0.4,'shot']]},
+         move:{n1:[8,2.6],n2:[9.8,3],n3:[11.4,3.4]}, ball:[10.2,0.4], lines:[[[8.8,2.8],10.2,0.4,'shot']]},
       ],
-      notes:['왼쪽 코너·킥인은 2번 슈팅 각이 안 나오니까 무조건 두더지.','1번이 스크린 걸고 니어로 튀어나가고, 2번·3번도 같이 골대 앞으로.','킥인은 낮고 빠르게 골문 앞으로. 셋 중 먼저 닿는 사람이 발 갖다 대서 슈팅.'] },
+      notes:['왼쪽 코너·킥인은 2번 슈팅 각이 안 나오니까 무조건 두더지. 가로로 한 줄, 킥인 쪽부터 1·2·3번.','1번이 스크린 걸고 니어로 튀어나가고, 2번·3번도 같이 골대 앞으로.','킥인은 낮고 빠르게 골문 앞으로. 셋 중 먼저 닿는 사람이 발 갖다 대서 슈팅.'] },
 
     { key:'corner-right', tab:'오른쪽 코너킥', title:'오른쪽 코너·킥인: 1번 스크린',
       players:[P('k',US,'킥'),P('n1',US,'1'),P('n2',US,'2'),P('n3',US,'3'),P('m1',THEM,''),P('m2',THEM,''),P('m3',THEM,''),P('tg',THEM,'골레')],
-      start:{k:[19.4,0.6],n1:[15,6],n2:[11,8],n3:[7.5,9.5], m1:[13.5,3.7],m2:[9.4,6.6],m3:[6.8,7.8],tg:[10,1.4]},
+      start:{k:[19.4,0.6],n1:[15,7],n2:[11,7],n3:[7,7], m1:[14.5,4.6],m2:[9.8,4.8],m3:[6.6,4.8],tg:[10,1.4]},
       ball:[19.4,0.6],
       steps:[
-        {title:'1·2·3번 자리 잡기. 상대는 맨투맨', text:'킥인 지점에서 가까운 순서로 <b>1번, 2번, 3번.</b> 상대는 각자 앞에 붙어 있다.'},
+        {title:'1·2·3번 가로로 한 줄. 상대는 맨투맨', text:'<b>가로로 한 줄</b>로 서고, 킥인 쪽부터 <b>1번, 2번, 3번.</b> 상대는 각자 앞에 붙어 있다.'},
         {title:'1번이 자기 앞 상대를 스크린 (트리거)', text:'<b>1번이 트리거.</b> 자기 앞에 붙은 상대를 몸으로 막는다. 여기서 <b>1번과 킥인 차는 사람이 보고 판단</b>해서 A 또는 B.',
-         move:{n1:[14.6,5.2]}, marks:[{x:17.4,y:6.6,t:'스크린'}]},
+         move:{n1:[14.6,6.2]}, marks:[{x:17.4,y:7.6,t:'스크린'}]},
       ],
       options:[
         {key:'A', label:'A · 1번 슈팅', steps:[
           {title:'1번은 니어로, 2번은 슈팅각으로, 3번은 2번 맨투맨 스크린', text:'1번은 막고 있던 상대 힘을 이용해서 <b>니어 쪽으로 튀어나간다.</b> 2번은 A든 B든 <b>똑같이 뒤로 나와서 슈팅각을 잡고</b>, 3번도 똑같이 <b>2번 붙은 상대를 스크린</b>하러 들어간다.',
-           move:{n1:[12.2,2.2],n2:[13.5,11.5],n3:[11,8.6]}, marks:[{x:7.4,y:11.4,t:'3번 스크린'}]},
+           move:{n1:[12.4,2.4],n2:[13.5,11.5],n3:[10.6,6.6]}, marks:[{x:6.4,y:11.4,t:'3번 스크린'}]},
           {title:'킥인 → 1번, 낮고 빠르게', text:'킥인 차는 사람은 <b>낮고 빠르게(두더지)</b> 1번에게. 공이 1번 쪽으로 가면 <b>3번도 바로 공으로 들어간다.</b>',
-           ball:[12.2,2.2], move:{n3:[11.2,3.6]}},
+           ball:[12.4,2.4], move:{n3:[11.4,3.4]}},
           {title:'먼저 발 닿는 사람이 발만 갖다 댄다', text:'세게 찰 필요 없음. <b>먼저 발 닿는 사람이 발만 갖다 대면</b> 들어간다.',
            ball:[10.7,0.4], lines:[['n1',10.7,0.4,'shot']]},
         ]},
         {key:'B', label:'B · 2번 슈팅', steps:[
           {title:'2번이 뒤로 나온다. 3번은 2번 맨투맨을 스크린', text:'1번 스크린 걸리는 순간 <b>2번이 뒤로 빠져 나온다.</b> <b>3번은 2번 붙은 상대를 스크린</b>해서 못 따라가게.',
-           move:{n2:[13.5,11.5],n3:[11,8.6]}, marks:[{x:7.4,y:11.4,t:'3번 스크린'}]},
+           move:{n2:[13.5,11.5],n3:[10.6,6.6]}, marks:[{x:6.4,y:11.4,t:'3번 스크린'}]},
           {title:'킥인 → 2번', text:'킥인 차는 사람이 <b>뒤로 나온 2번에게.</b>',
            ball:[13.5,11.5]},
           {title:'2번 슈팅', text:'2번은 받자마자 <b>슈팅.</b>',
-           ball:[9.2,0.4], lines:[['n2',9.2,0.4,'shot']]},
+           ball:[10.6,0.4], lines:[['n2',10.6,0.4,'shot']]},
         ]},
       ],
-      notes:['1번이 트리거로 자기 앞 상대를 스크린. 1번과 킥인 차는 사람이 보고 A/B 판단.','2번은 A든 B든 똑같이 뒤로 나와서 슈팅각을 잡는다.','A: 1번이 니어로 튀어나가고, 3번은 2번 맨투맨 스크린 들어갔다가 킥인이 1번 쪽으로 가면 같이 공으로. 먼저 발 닿는 사람이 발만 갖다 댄다.','B: 킥인 → 뒤로 나온 2번 슈팅. 3번은 2번 붙은 상대를 스크린.'] },
+      notes:['가로로 한 줄, 킥인 쪽부터 1·2·3번. 1번이 트리거로 자기 앞 상대를 스크린. 1번과 킥인 차는 사람이 보고 A/B 판단.','2번은 A든 B든 똑같이 뒤로 나와서 슈팅각을 잡는다.','A: 1번이 니어로 튀어나가고, 3번은 2번 맨투맨 스크린 들어갔다가 킥인이 1번 쪽으로 가면 같이 공으로. 먼저 발 닿는 사람이 발만 갖다 댄다.','B: 킥인 → 뒤로 나온 2번 슈팅. 3번은 2번 붙은 상대를 스크린.'] },
 
     { key:'drill-para', tab:'훈련: 파라→파포', title:'훈련 패턴: 파라 → 서 → 반대쪽 → 파포',
       players:[P('l',US,'왼쪽'),P('c',US,'가운데'),P('r',US,'오른쪽'),P('t4',THEM,''),P('t5',THEM,''),P('tg',THEM,'골레')],
@@ -373,7 +376,10 @@
   let sceneIdx=0, stepIdx=-1, playing=false, dwellId=null, doneId=null, curveIds=[];
   let pos={}, ball=[10,20], nodes={}, ballNode=null, optIdx=0;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DUR=reduce?1000:1300; // 움직임이 곧 내용이라 '동작 줄이기'여도 조금 짧게만
+  const BASE=reduce?1000:1300; // 움직임이 곧 내용이라 '동작 줄이기'여도 조금 짧게만
+  const SPEEDS=[1,1.5,2]; let speed=1;
+  try{const v=parseFloat(localStorage.getItem('f2f-speed'));if(SPEEDS.includes(v))speed=v;}catch(e){}
+  const DUR=()=>BASE/speed;
   const EASE='cubic-bezier(.45,0,.2,1)';
   const $=id=>document.getElementById(id);
   const tabs=$('tabs'), seg=$('seg');
@@ -483,11 +489,11 @@
     // CSS 트랜지션으로 이동 (합성 스레드에서 처리되어 모바일에서도 부드러움)
     for(const id in to){const a=from[id],b=to[id],m=moves[id];
       if(a[0]===b[0]&&a[1]===b[1]){place(nodes[id],b[0],b[1],0);continue;}
-      if(m&&m.via){const c=m.via;place(nodes[id],c[0],c[1],DUR/2,'cubic-bezier(.45,0,.6,1)');curveIds.push(setTimeout(()=>place(nodes[id],b[0],b[1],DUR/2,'cubic-bezier(.4,0,.2,1)'),DUR/2));}
-      else place(nodes[id],b[0],b[1],DUR);
+      if(m&&m.via){const c=m.via;place(nodes[id],c[0],c[1],DUR()/2,'cubic-bezier(.45,0,.6,1)');curveIds.push(setTimeout(()=>place(nodes[id],b[0],b[1],DUR()/2,'cubic-bezier(.4,0,.2,1)'),DUR()/2));}
+      else place(nodes[id],b[0],b[1],DUR());
       pos[id]=b.slice();}
-    if(bFrom[0]!==bTo[0]||bFrom[1]!==bTo[1]) place(ballNode,bTo[0],bTo[1],DUR); ball=bTo.slice();
-    doneId=setTimeout(()=>{doneId=null;svg.querySelector('#lines').querySelectorAll('.trail').forEach(n=>n.setAttribute('opacity','.4'));cb&&cb();},DUR+30);
+    if(bFrom[0]!==bTo[0]||bFrom[1]!==bTo[1]) place(ballNode,bTo[0],bTo[1],DUR()); ball=bTo.slice();
+    doneId=setTimeout(()=>{doneId=null;svg.querySelector('#lines').querySelectorAll('.trail').forEach(n=>n.setAttribute('opacity','.4'));cb&&cb();},DUR()+30);
   }
 
   function setPlayUI(){ $('play').setAttribute('aria-label',playing?'일시정지':'재생'); $('playIcon').innerHTML=playing?'<path d="M7 5h4v14H7zM13 5h4v14h-4z"/>':'<path d="M8 5v14l11-7z"/>'; }
@@ -497,7 +503,7 @@
     if(stepIdx>=steps.length-1){
       if(s.options&&optIdx<s.options.length-1){optIdx++;[...$('opts').querySelectorAll('button')].forEach((b,j)=>b.setAttribute('aria-pressed',j===optIdx));buildSeg();resetToCommonEnd();dwellId=setTimeout(playNext,600);return;}
       stopPlay();return;}
-    goTo(stepIdx+1,()=>{if(!playing)return;const dwell=Math.max(2600,steps[stepIdx].text.replace(/<[^>]+>/g,'').length*62);dwellId=setTimeout(playNext,dwell);});
+    goTo(stepIdx+1,()=>{if(!playing)return;const dwell=Math.max(2600,steps[stepIdx].text.replace(/<[^>]+>/g,'').length*62)/speed;dwellId=setTimeout(playNext,dwell);});
   }
   $('play').onclick=()=>{
     if(playing){stopPlay();return;}
@@ -506,6 +512,9 @@
     playing=true;setPlayUI();playNext();
   };
   const nextIcon=$('next').querySelector('svg');
+  function setSpeedUI(){$('spd').textContent=(speed%1?speed:speed+'')+'x';}
+  $('spd').onclick=()=>{speed=SPEEDS[(SPEEDS.indexOf(speed)+1)%SPEEDS.length];setSpeedUI();try{localStorage.setItem('f2f-speed',speed);}catch(e){}};
+  setSpeedUI();
   function nextOption(){const s=SCENES[sceneIdx];if(s.options&&optIdx<s.options.length-1){optIdx++;switchOption();return true;}return false;}
   $('next').onclick=()=>{stopPlay();const n=stepsOf(SCENES[sceneIdx]).length;if(stepIdx<n-1)goTo(stepIdx+1);else nextOption();};
   $('prev').onclick=()=>{stopPlay();if(stepIdx>=0)goTo(stepIdx-1);};
