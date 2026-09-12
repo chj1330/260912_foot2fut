@@ -27,7 +27,7 @@
   .eyebrow i{width:6px;height:6px;border-radius:50%;background:var(--us);box-shadow:0 0 8px var(--us)}
   h1{font-weight:900;font-size:30px;line-height:1.1;margin:0;letter-spacing:-.02em}
   .sub{margin:6px 0 0;color:var(--muted);font-size:13.5px}
-  .legend{display:flex;gap:8px;margin-top:12px}
+  .legend{display:flex;gap:8px;margin-top:10px}
   .legend span{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:500;color:var(--text);background:var(--card);border:1px solid var(--edge);border-radius:999px;padding:5px 11px 5px 7px}
   .legend i{width:14px;height:14px;border-radius:50%;display:inline-block;border:2px solid rgba(0,0,0,.55)}
   .legend .us{background:var(--us);box-shadow:0 0 10px rgba(255,210,51,.5)} .legend .them{background:var(--them)}
@@ -74,7 +74,7 @@
   .caption p b{color:var(--us);font-weight:700}
   .caption p .risk{color:var(--risk);font-weight:700}
 
-  .controls{display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 14px 8px}
+  .controls{display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 14px 18px}
   .btn{border:1px solid var(--edge2);background:var(--card2);color:var(--text);border-radius:999px;height:40px;padding:0 14px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:5px;font:600 13px var(--font);transition:transform .12s,background .15s,opacity .15s}
   .btn:hover{background:rgba(255,255,255,.12)}
   .btn:active{transform:scale(.96)}
@@ -106,16 +106,14 @@
 
 <div class="wrap">
   <header>
-    <div class="eyebrow"><i></i>내일 풋투풋 · 코치님 미팅 정리</div>
     <h1>풋투풋 전술판</h1>
-    <p class="sub">코치님 미팅 영상 5개를 장면별로 옮겼습니다. 재생 누르면 움직이고, 아래 글만 읽어도 됩니다.</p>
     <div class="legend"><span><i class="us"></i>우리</span><span><i class="them"></i>상대</span><span>▲ 위가 상대 골대</span></div>
   </header>
 
   <div class="tabs" role="tablist" id="tabs"></div>
 
   <div class="board">
-    <div class="scene-head"><h2 id="sceneTitle"></h2><span class="src" id="sceneSrc"></span></div>
+    <div class="scene-head"><h2 id="sceneTitle"></h2></div>
     <div class="opts" id="opts" hidden></div>
     <div class="stage">
       <div class="pitch-box" id="pitchBox"><svg class="pitch" id="pitch" viewBox="-1.5 -2.4 23 44.8" aria-label="전술판"></svg><div class="layer" id="layer"></div></div>
@@ -133,14 +131,13 @@
       <button class="btn play" id="play" aria-label="재생"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg></button>
       <button class="btn" id="next">다음<svg viewBox="0 0 24 24"><path d="M8.5 5v14L17 12z"/></svg></button>
     </div>
-    <p class="hint"><kbd>이전</kbd> <kbd>다음</kbd> 으로 한 단계씩 앞뒤로. 진행 막대 누르면 바로 이동.</p>
   </div>
 
   <section class="notes">
-    <h2>한 줄로 요약하면</h2>
+    <h2>요약</h2>
     <p class="one">공격은 <b>2대1</b>만 생각하기. 수비는 <b>킥오프부터 전방 압박</b>. 나머지는 그 자리에 있는 사람 센스.</p>
 
-    <h2>포지션별로 기억할 것</h2>
+    <h2>포지션별</h2>
     <div class="roles">
       <div class="role"><div class="who">피보</div><p>압박 때 위에 서 있지 말고 세 발짝 내려와서 안쪽 커버. 공격 땐 내려와서 받고, 뒤 공간은 아라가 쓴다.</p></div>
       <div class="role"><div class="who">아라</div><p>공 가진 사람한테 받을 각 만들어주기. 주고 나면 서 있지 말고 빠져서 수비 끌고 가기. 수비 땐 바깥(라인 쪽) 막기.</p></div>
@@ -148,11 +145,10 @@
       <div class="role"><div class="who">GK 지아</div><p>코너·킥인 때 앞1 왼쪽(골라인 쪽)은 지아 몫. 잡으면 바로 끝이 뛰는 앞 공간으로 던지기.</p></div>
     </div>
 
-    <h2>장면별 핵심</h2>
+    <h2>장면별 메모</h2>
     <div id="frames"></div>
   </section>
 
-  <footer>코치님 미팅 영상(9/12)을 받아 적고 전술판 배치를 옮긴 것. 영상에선 노랑·빨강을 번갈아 쓰셨지만 여기선 항상 노랑이 우리, 위쪽 골대가 상대 골대.</footer>
 </div>
 
 <script>
@@ -162,7 +158,7 @@
   const P=(id,team,label)=>({id,team,label});
 
   const SCENES=[
-    { key:'kickoff-press', tab:'전방 압박', title:'상대 킥오프 → 전방 압박', src:'영상 1 · 1:45~4:00',
+    { key:'kickoff-press', tab:'전방 압박', title:'상대 킥오프 → 전방 압박',
       players:[P('gk',US,'GK'),P('fx',US,'픽소'),P('al',US,'아라'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'GK')],
       start:{gk:[10,38.6],fx:[10,31],al:[4.5,26.5],ar:[15.5,26.5],pv:[10,22.2], t1:[9.2,19],t2:[11.6,18.4],t3:[4.5,11.5],t4:[15.5,11.5],tg:[10,1.4]},
       ball:[10,20],
@@ -180,7 +176,7 @@
       ],
       notes:['우리 공 아니면 킥오프 전부터 올라가서 선다. 아라는 하프라인까지, 피보는 원 밖 하프라인, 픽소도 같이.','목적은 상대 진영에서 계속 공이 놀게 하는 것. 거기서 미스나면 우리 찬스.','압박 뒤로 빠지는 공이 제일 위험. 픽소는 1대1에서 돌아서지 못하게 버티고, 나머지는 바로 내려와서 같이 잡는다.','전방 압박은 체력 소모가 큼. 위에서 안 풀리면 존으로 내려서서 기다리는 때도 있음 (다음 장면).'] },
 
-    { key:'zone-half', tab:'하프 압박', title:'존으로 내려섰을 때: 하프라인이 압박 지점', src:'영상 1 · 4:00~5:20',
+    { key:'zone-half', tab:'하프 압박', title:'존으로 내려섰을 때: 하프라인이 압박 지점',
       players:[P('gk',US,'GK'),P('fx',US,'픽소'),P('al',US,'아라'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,'')],
       start:{gk:[10,38.6],fx:[10,31.5],al:[5.5,27],ar:[14.5,27],pv:[10,21.5], t1:[10,9],t2:[4,13.5],t3:[16,13.5],t4:[10,16.5]},
       ball:[10,9],
@@ -200,7 +196,7 @@
       ],
       notes:['압박 시작점은 하프라인. 공이 넘어오면 빨리 나가서 선다. 뺏으러 달려드는 게 아님.','아라는 바깥(라인 쪽)을 막는다. 안쪽은 피보가 커버.','피보는 위에 서 있지 말고 세 발짝 내려와서 안쪽 커버. 쌓이면 선 막고 둘이서.','뒤로 돌리면 다시 나가면 되고, 빠지는 공은 커버.'] },
 
-    { key:'attack-2v1', tab:'공격 2대1', title:'공격은 2대1: 공 가진 사람 혼자 두지 않기', src:'영상 1 · 0:00~1:45',
+    { key:'attack-2v1', tab:'공격 2대1', title:'공격은 2대1: 공 가진 사람 혼자 두지 않기',
       players:[P('gk',US,'GK'),P('fx',US,'픽소'),P('al',US,'아라'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'GK')],
       start:{gk:[10,38.6],fx:[10,33],al:[3,27],ar:[17,27],pv:[10,17], t1:[4.6,23.6],t2:[15.5,23],t3:[10,29.2],t4:[10,13],tg:[10,1.4]},
       ball:[3,27],
@@ -219,7 +215,7 @@
       ],
       notes:['연습한 빌드업이 그대로 나오진 않는다. 지킬 건 하나, 공 가진 사람을 혼자 두지 않기.','받을 각 3개: 픽소, 피보, 반대쪽 아라(안으로 들어오면서).','2대1이 기본. 주고 나면 서 있지 말고 빠져서 수비를 끌고 간다. 그래야 받은 사람이 편해진다.','언제 파고들지 같은 건 각자 센스. 틀만 지키면 된다.'] },
 
-    { key:'our-kickoff', tab:'우리 킥오프', title:'우리 킥오프: 유진 1대1', src:'영상 3 · 0:30~2:00',
+    { key:'our-kickoff', tab:'우리 킥오프', title:'우리 킥오프: 유진 1대1',
       players:[P('gk',US,'GK'),P('fx',US,'픽소'),P('al',US,'아라'),P('yj',US,'유진'),P('mj',US,'민지'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'GK')],
       start:{gk:[10,38.6],fx:[10,32],al:[16,25],yj:[8.6,21.8],mj:[11.2,20.6], t1:[10,16.4],t2:[4.5,12],t3:[15.5,12],t4:[10,6],tg:[10,1.4]},
       ball:[10,20],
@@ -244,7 +240,7 @@
       ],
       notes:['킥오프에서 아라로 빼지 않는다. 민지가 유진에게 주고 유진이 바로 1대1.','상대 피보는 못 따라오고, 상대 아라는 관여 못 한다. 상대 픽소랑 1대1.','민지는 주자마자 반대편 파포스트에 가 있는다.','픽소가 유진에게 나오면 민지에게, 민지 쪽으로 쏠리면 유진이 슈팅.'] },
 
-    { key:'corner-y', tab:'코너 Y자 수비', title:'코너·킥인 수비: 옆으로 누운 Y', src:'영상 2 · 0:00~3:00',
+    { key:'corner-y', tab:'코너 Y자 수비', title:'코너·킥인 수비: 옆으로 누운 Y',
       players:[P('gk',US,'지아'),P('a',US,'앞1'),P('b',US,'앞2'),P('c',US,'가운데'),P('d',US,'끝'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('t5',THEM,'')],
       start:{gk:[8.6,39.2],a:[2.2,39],b:[2.6,37.2],c:[4.8,38.6],d:[7.4,38], t1:[0.6,39.4],t2:[2.8,31.4],t3:[6.6,38.4],t4:[9.6,34.2],t5:[13.4,35.4]},
       ball:[0.6,39.4],
@@ -268,7 +264,7 @@
       ],
       notes:['옆으로 누운 Y. 골대 안으로 들어가지 말고 5m 선까지 나와서 앞에 둘이 선다.','앞1 왼쪽(골라인 쪽)은 지아가 본다. 가운데로 들어오는 공은 앞1이 발 뻗어 끊는다.','라인 쪽 상대에게 패스가 가면 앞2가 나간다. 달려들지 말고 슛 각과 안쪽 패스 각을 막는 자리로. 가운데는 자리 지키고 자기 맨투맨만 확인.','골대 앞에서 등지는 상대는 몸싸움 말고 그 앞에 선다. 애매하면 밖으로 걷어낸다.','끝나면 지아가 잡아서 끝이 뛰는 앞 공간으로 던지고, 끝은 그대로 골레이로와 1대1.'] },
 
-    { key:'corner-left', tab:'왼쪽 코너킥', title:'왼쪽 코너·킥인: 무조건 두더지', src:'코치님 설명 (추가)',
+    { key:'corner-left', tab:'왼쪽 코너킥', title:'왼쪽 코너·킥인: 무조건 두더지',
       players:[P('k',US,'킥'),P('n1',US,'1'),P('n2',US,'2'),P('n3',US,'3'),P('fx',US,'픽소'),P('m1',THEM,''),P('m2',THEM,''),P('m3',THEM,''),P('m4',THEM,''),P('tg',THEM,'GK')],
       start:{k:[0.6,0.6],n1:[5,6],n2:[9,8],n3:[12.5,9.5],fx:[10,18], m1:[6.5,3.7],m2:[10.6,6.6],m3:[13.2,7.8],m4:[13,15],tg:[10,1.4]},
       ball:[0.6,0.6],
@@ -285,12 +281,12 @@
       ],
       notes:['왼쪽 코너·킥인은 2번 슈팅 각이 안 나오니까 무조건 두더지.','1번이 자기 앞 상대를 스크린하고 니어로 튀어나간다. 킥인은 낮고 빠르게 1번에게, 1번은 발만 갖다 댄다.','2번·3번은 흘러나오는 공 잡으러 골대 앞으로.'] },
 
-    { key:'corner-right', tab:'오른쪽 코너킥', title:'오른쪽 코너·킥인: 1번 스크린', src:'코치님 설명 (추가)',
+    { key:'corner-right', tab:'오른쪽 코너킥', title:'오른쪽 코너·킥인: 1번 스크린',
       players:[P('k',US,'킥'),P('n1',US,'1'),P('n2',US,'2'),P('n3',US,'3'),P('fx',US,'픽소'),P('m1',THEM,''),P('m2',THEM,''),P('m3',THEM,''),P('m4',THEM,''),P('tg',THEM,'GK')],
       start:{k:[19.4,0.6],n1:[15,6],n2:[11,8],n3:[7.5,9.5],fx:[10,18], m1:[13.5,3.7],m2:[9.4,6.6],m3:[6.8,7.8],m4:[7,15],tg:[10,1.4]},
       ball:[19.4,0.6],
       steps:[
-        {title:'1·2·3번 자리 잡기. 상대는 맨투맨', text:'오른쪽 코너·킥인에서 쓰는 전술. 킥인 지점에서 가까운 순서로 <b>1번, 2번, 3번.</b> 상대는 각자 앞에 붙어 있다. 픽소는 뒤에서 대기.'},
+        {title:'1·2·3번 자리 잡기. 상대는 맨투맨', text:'킥인 지점에서 가까운 순서로 <b>1번, 2번, 3번.</b> 상대는 각자 앞에 붙어 있다. 픽소는 뒤에서 대기.'},
         {title:'1번이 자기 앞 상대를 스크린 (트리거)', text:'<b>1번이 트리거.</b> 자기 앞에 붙은 상대를 몸으로 막는다. 여기서 <b>1번과 킥인 차는 사람이 보고 판단</b>해서 A 또는 B.',
          move:{n1:[14.6,5.2]}, marks:[{x:17.4,y:6.6,t:'스크린'}]},
       ],
@@ -312,9 +308,9 @@
            ball:[9.2,0.4], lines:[['n2',9.2,0.4,'shot']]},
         ]},
       ],
-      notes:['오른쪽 코너·킥인에서 쓰는 전술. 1번이 트리거로 자기 앞 상대를 스크린. 1번과 킥인 차는 사람이 보고 A/B 판단.','A: 1번이 니어로 튀어나가고, 킥인은 낮고 빠르게 1번에게. 1번은 발만 갖다 댄다.','B: 2번이 뒤로 나오고 킥인 → 2번 슈팅. 3번은 2번 붙은 상대를 스크린.'] },
+      notes:['1번이 트리거로 자기 앞 상대를 스크린. 1번과 킥인 차는 사람이 보고 A/B 판단.','A: 1번이 니어로 튀어나가고, 킥인은 낮고 빠르게 1번에게. 1번은 발만 갖다 댄다.','B: 2번이 뒤로 나오고 킥인 → 2번 슈팅. 3번은 2번 붙은 상대를 스크린.'] },
 
-    { key:'drill-para', tab:'훈련: 파라→파포', title:'훈련 패턴: 파라 → 서 → 반대쪽 → 파포', src:'영상 4·5',
+    { key:'drill-para', tab:'훈련: 파라→파포', title:'훈련 패턴: 파라 → 서 → 반대쪽 → 파포',
       players:[P('l',US,'왼쪽'),P('c',US,'가운데'),P('r',US,'오른쪽'),P('t4',THEM,''),P('t5',THEM,''),P('tg',THEM,'GK')],
       start:{l:[3.5,27],c:[10,28.5],r:[16.5,27], t4:[10,9.5],t5:[12,17.5],tg:[10,1.4]},
       ball:[10,28.5],
@@ -402,9 +398,9 @@
     stopPlay(); sceneIdx=i; const s=SCENES[i]; optIdx=0;
     [...tabs.children].forEach((t,j)=>t.setAttribute('aria-selected',j===i));
     if(fromUser) tabs.children[i].scrollIntoView({inline:'center',block:'nearest',behavior:reduce?'auto':'smooth'});
-    $('sceneTitle').textContent=s.title; $('sceneSrc').textContent=s.src;
+    $('sceneTitle').textContent=s.title; 
     const opts=$('opts'); opts.innerHTML=''; opts.hidden=!s.options;
-    if(s.options){const lab=document.createElement('span');lab.className='opts-label';lab.textContent=`${s.steps.length}단계까지 공통, 그다음`;opts.appendChild(lab);
+    if(s.options){
       s.options.forEach((o,j)=>{const b=document.createElement('button');b.textContent=o.label;b.setAttribute('aria-pressed',j===optIdx);b.onclick=()=>{if(optIdx===j)return;optIdx=j;switchOption();};opts.appendChild(b);});}
     drawPitch(); layer.innerHTML=''; nodes={}; fitFont();
     const st=endState(s,-1); pos=st.p; ball=st.b;
@@ -464,7 +460,7 @@
 
   function showCaption(k){
     const s=SCENES[sceneIdx], steps=stepsOf(s), n=steps.length;
-    if(k<0){$('stepNo').className='step-no';$('stepNo').textContent=`시작 배치 · ${n}단계`;$('stepTitle').textContent='재생 누르면 순서대로 움직여요';$('stepText').innerHTML='이전 · 다음으로 한 단계씩 앞뒤로 볼 수 있고, 위 진행 막대 누르면 바로 이동. 노란 화살표가 선수, 흰 선이 공.'+(s.options?' 이 장면은 A / B 두 가지라 위 버튼으로 바꿔 볼 수 있어요.':'');}
+    if(k<0){$('stepNo').className='step-no';$('stepNo').textContent=`${n}단계`;$('stepTitle').textContent='시작 배치';$('stepText').innerHTML='재생 또는 다음을 누르면 한 단계씩 움직입니다.'+(s.options?' A / B는 위 버튼으로.':'');}
     else{const st=steps[k], isOpt=s.options&&k>=s.steps.length, key=isOpt?s.options[optIdx].key:null;
       $('stepNo').className='step-no'+(key==='B'?' b':'');
       $('stepNo').textContent=`STEP ${k+1} / ${n}`+(isOpt?` · 옵션 ${key}`:'');
