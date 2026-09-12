@@ -40,14 +40,15 @@
   .tab[aria-selected="true"] .k{background:rgba(0,0,0,.18);color:var(--us-ink)}
   .tab:focus-visible,.btn:focus-visible,.seg button:focus-visible{outline:2px solid var(--us);outline-offset:2px}
 
-  .board{background:var(--card);border:1px solid var(--edge);border-radius:var(--r);overflow:hidden;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 20px 60px rgba(0,0,0,.45)}
+  .board{border:1px solid var(--edge);border-radius:var(--r);overflow:hidden;background:#151b17;box-shadow:0 12px 32px rgba(0,0,0,.35)}
   .scene-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 10px}
   .scene-head h2{font-weight:800;font-size:19px;margin:0;line-height:1.2;letter-spacing:-.01em}
   .scene-head .src{font-size:11px;color:var(--faint);white-space:nowrap;background:var(--card);border:1px solid var(--edge);border-radius:999px;padding:3px 9px}
   .stage{display:grid;grid-template-columns:1fr;gap:10px;padding:4px 14px 0}
   @media (min-width:640px){.stage{grid-template-columns:minmax(0,310px) 1fr;gap:16px;align-items:start;padding-inline:18px}}
   .pitch-box{border-radius:18px;overflow:hidden;background:var(--pitch);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08);max-width:310px;margin:0 auto;width:100%}
-  svg.pitch{width:100%;display:block;aspect-ratio:23/45;max-height:76vh}
+  svg.pitch{width:100%;display:block;aspect-ratio:23/45;max-height:76vh;will-change:contents}
+  .pl,#ballg>g{will-change:transform}
 
   .seg{display:flex;gap:4px;margin:10px 0 8px}
   .seg button{flex:1;height:6px;border-radius:3px;border:0;background:rgba(255,255,255,.12);cursor:pointer;padding:0;transition:background .2s}
@@ -354,7 +355,7 @@
   let sceneIdx=0, stepIdx=-1, playing=false, animId=null, dwellId=null;
   let pos={}, ball=[10,20], nodes={}, ballNode=null;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const DUR=reduce?0:1300;
+  const DUR=reduce?1000:1300; // 움직임이 곧 내용이라 '동작 줄이기'여도 조금 짧게만
   const $=id=>document.getElementById(id);
   const tabs=$('tabs'), seg=$('seg');
 
