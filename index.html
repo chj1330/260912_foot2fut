@@ -376,7 +376,7 @@
   let sceneIdx=0, stepIdx=-1, playing=false, dwellId=null, doneId=null, curveIds=[];
   let pos={}, ball=[10,20], nodes={}, ballNode=null, optIdx=0;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const BASE=reduce?1000:1300; // 움직임이 곧 내용이라 '동작 줄이기'여도 조금 짧게만
+  const BASE=reduce?700:800; // 움직임이 곧 내용이라 '동작 줄이기'여도 조금 짧게만
   const SPEEDS=[1,1.5,2]; let speed=1;
   try{const v=parseFloat(localStorage.getItem('f2f-speed'));if(SPEEDS.includes(v))speed=v;}catch(e){}
   const DUR=()=>BASE/speed;
@@ -501,9 +501,9 @@
   function playNext(){
     const s=SCENES[sceneIdx], steps=stepsOf(s);
     if(stepIdx>=steps.length-1){
-      if(s.options&&optIdx<s.options.length-1){optIdx++;[...$('opts').querySelectorAll('button')].forEach((b,j)=>b.setAttribute('aria-pressed',j===optIdx));buildSeg();resetToCommonEnd();dwellId=setTimeout(playNext,600);return;}
+      if(s.options&&optIdx<s.options.length-1){optIdx++;[...$('opts').querySelectorAll('button')].forEach((b,j)=>b.setAttribute('aria-pressed',j===optIdx));buildSeg();resetToCommonEnd();dwellId=setTimeout(playNext,400);return;}
       stopPlay();return;}
-    goTo(stepIdx+1,()=>{if(!playing)return;const dwell=Math.max(2600,steps[stepIdx].text.replace(/<[^>]+>/g,'').length*62)/speed;dwellId=setTimeout(playNext,dwell);});
+    goTo(stepIdx+1,()=>{if(!playing)return;const dwell=Math.max(1500,steps[stepIdx].text.replace(/<[^>]+>/g,'').length*36)/speed;dwellId=setTimeout(playNext,dwell);});
   }
   $('play').onclick=()=>{
     if(playing){stopPlay();return;}
