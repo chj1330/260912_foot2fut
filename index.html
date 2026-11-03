@@ -41,17 +41,17 @@
   .tab-group{flex:0 0 auto;align-self:center;font-size:12px;font-weight:800;letter-spacing:.1em;border-radius:8px;padding:5px 9px;margin-left:10px}
   .tab-group:first-child{margin-left:0}
   .tab-group[data-g="수비"]{background:#8cc8ff;color:#0a1a2a}
-  .tab-group[data-g="빌드업"]{background:var(--us);color:var(--us-ink)}
+  .tab-group[data-g="공격 전개"]{background:var(--us);color:var(--us-ink)}
   .tab-group[data-g="세트피스"]{background:#ffa94d;color:#2a1600}
   .tab[data-g="세트피스"]{border-color:rgba(255,169,77,.35)} .tab[data-g="세트피스"] .k{background:rgba(255,169,77,.22);color:#ffa94d}
   .tab[data-g="세트피스"][aria-selected="true"]{background:#ffa94d;color:#2a1600;border-color:#ffa94d;box-shadow:0 6px 20px rgba(255,169,77,.25)}
   .tab[data-g="세트피스"][aria-selected="true"] .k{background:rgba(0,0,0,.18);color:#2a1600}
   .tab[data-g="수비"]{border-color:rgba(140,200,255,.35)} .tab[data-g="수비"] .k{background:rgba(140,200,255,.22);color:#8cc8ff}
-  .tab[data-g="빌드업"]{border-color:rgba(255,210,51,.3)} .tab[data-g="빌드업"] .k{background:rgba(255,210,51,.2);color:var(--us)}
+  .tab[data-g="공격 전개"]{border-color:rgba(255,210,51,.3)} .tab[data-g="공격 전개"] .k{background:rgba(255,210,51,.2);color:var(--us)}
   .tab[data-g="수비"][aria-selected="true"]{background:#8cc8ff;color:#0a1a2a;border-color:#8cc8ff;box-shadow:0 6px 20px rgba(140,200,255,.25)}
   .tab[data-g="수비"][aria-selected="true"] .k{background:rgba(0,0,0,.18);color:#0a1a2a}
   .group-h{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.1em;border-radius:8px;padding:5px 10px;margin:18px 0 8px}
-  .group-h[data-g="수비"]{background:#8cc8ff;color:#0a1a2a} .group-h[data-g="빌드업"]{background:var(--us);color:var(--us-ink)} .group-h[data-g="세트피스"]{background:#ffa94d;color:#2a1600}
+  .group-h[data-g="수비"]{background:#8cc8ff;color:#0a1a2a} .group-h[data-g="공격 전개"]{background:var(--us);color:var(--us-ink)} .group-h[data-g="세트피스"]{background:#ffa94d;color:#2a1600}
   .group-h:first-child{margin-top:0}
   .tab:focus-visible,.btn:focus-visible,.seg button:focus-visible{outline:2px solid var(--us);outline-offset:2px}
 
@@ -218,7 +218,7 @@
       ],
       notes:['압박 시작점은 하프라인. 공이 넘어오면 빨리 나가서 선다. 뺏으러 달려드는 게 아님.','아라는 바깥(라인 쪽)을 막는다. 안쪽은 피보가 커버.','피보는 위에 서 있지 말고 세 발짝 내려와서 안쪽 커버. 쌓이면 선 막고 둘이서.','뒤로 돌리면 다시 나가면 되고, 빠지는 공은 커버.'] },
 
-    { key:'corner-y', updated:'2026-09-12', group:'수비', tab:'코너 Y자 수비', title:'코너·킥인 수비: 옆으로 누운 Y',
+    { key:'corner-y', updated:'2026-09-12', group:'세트피스', tab:'상대 코너 수비', title:'상대 코너·킥인 수비: 옆으로 누운 Y',
       players:[P('gk',US,'지아'),P('a',US,'앞1'),P('b',US,'앞2'),P('c',US,'가운데'),P('d',US,'끝'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('t5',THEM,'')],
       start:{gk:[8.6,39.2],a:[2.2,39],b:[2.6,37.2],c:[4.8,38.6],d:[7.4,38], t1:[0.6,39.4],t2:[2.8,31.4],t3:[6.6,38.4],t4:[9.6,34.2],t5:[13.4,35.4]},
       ball:[0.6,39.4],
@@ -241,32 +241,6 @@
          ball:[10.6,5.5], move:{d:[10.8,7]}},
       ],
       notes:['옆으로 누운 Y. 골대 안으로 들어가지 말고 5m 선까지 나와서 앞에 둘이 선다.','앞1 왼쪽(골라인 쪽)은 지아가 본다. 가운데로 들어오는 공은 앞1이 발 뻗어 끊는다.','라인 쪽 상대에게 패스가 가면 앞2가 나간다. 달려들지 말고 슛 각과 안쪽 패스 각을 막는 자리로. 앞1도 슈팅각 안쪽으로 한 발. 가운데는 자리 지키고 자기 맨투맨만 확인.','골대 앞에서 등지는 상대는 몸싸움 말고 그 앞에 선다. 애매하면 밖으로 걷어낸다.','끝나면 지아가 잡아서 끝이 뛰는 앞 공간으로 던지고, 끝은 그대로 골레이로와 1대1.'] },
-
-    { key:'gk-throw', updated:'2026-11-03', group:'세트피스', tab:'골레이로 던지기', title:'골레이로 던지기 → 피보 → 아라',
-      players:[P('gk',US,'골레'),P('al',US,'아라'),P('fx',US,'픽소'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'골레')],
-      start:{gk:[10,38.6],al:[3,29],fx:[10,30],ar:[17,29],pv:[10,14], t1:[5,24],t2:[15,24],t3:[10,25],t4:[10,11.3],tg:[10,1.4]},
-      ball:[10,38.6],
-      steps:[
-        {title:'골레이로가 잡으면 빌드업 말고, 던질 수 있으면 바로 피보에게. 그 순간 아라들 출발', text:'골레이로가 공을 잡았을 때 <b>피보에게 던질 수 있으면 바로 던진다.</b> 공이 나가는 순간 <b>양쪽 아라가 동시에 앞으로 뛴다.</b>',
-         ball:[10,14.5], move:{al:[4,23],ar:[16,23],t1:[6,21],t2:[14,21]}},
-        {title:'피보는 등지고 버틴다. 아라들은 계속 들어온다', text:'피보는 상대 픽소를 <b>등진 채로 버틴다.</b> 아라들은 멈추지 말고 계속 들어온다.',
-         move:{al:[5,14],ar:[15,14],t1:[6.5,16.5],t2:[13.5,16.5]}},
-      ],
-      options:[
-        {key:'A', label:'A · 피보가 흘려줌', steps:[
-          {title:'피보가 옆으로 흘려준다', text:'피보가 등진 채로 버티다가 <b>뛰어 들어오는 아라에게 옆으로 흘려준다.</b>',
-           ball:[5.5,11.5], move:{al:[5.5,11.5]}},
-          {title:'아라 슈팅. 반대편 아라는 파포까지', text:'받은 아라가 <b>바로 슈팅.</b> 반대편 아라는 <b>파포스트까지 뛰어서</b> 흘러나오는 공을 줍는다.',
-           ball:[10.6,0.4], move:{ar:[12.8,3.6],t2:[13.4,7]}, lines:[['al',10.6,0.4,'shot']]},
-        ]},
-        {key:'B', label:'B · 피보 맞고 나옴', steps:[
-          {title:'피보 맞고 나온 공을 아라가', text:'피보가 못 잡고 <b>몸에 맞고 흘러나와도</b> 뛰어 들어온 아라가 바로 잡는다.',
-           ball:[14.5,11.5], move:{ar:[14.5,11.5]}},
-          {title:'아라 슈팅. 반대편 아라는 파포까지', text:'받은 아라가 <b>바로 슈팅.</b> 반대편 아라는 <b>파포스트까지 뛰어서</b> 흘러나오는 공을 줍는다.',
-           ball:[9.4,0.4], move:{al:[7.2,3.6],t1:[6.6,7]}, lines:[['ar',9.4,0.4,'shot']]},
-        ]},
-      ],
-      notes:['골레이로가 잡으면 빌드업 말고, 던질 수 있으면 바로 피보에게.','던지는 순간 양쪽 아라 출발, 멈추지 않고 계속 들어온다. 피보는 상대 픽소 등지고 버틴다.','피보가 옆으로 흘려주거나, 피보 맞고 나온 공을 아라가 잡아서 슈팅. 반대편 아라는 파포스트까지 뛴다.'] },
 
     { key:'kickin-def', updated:'2026-11-03', group:'세트피스', tab:'수비 진영 킥인', title:'우리 진영 킥인: 피보 내려오고 반대 아라 올라가기',
       players:[P('gk',US,'골레'),P('al',US,'아라'),P('fx',US,'픽소'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'골레')],
@@ -363,7 +337,33 @@
       ],
       notes:['킥오프에서 아라로 빼지 않는다. 민지가 유진에게 주고 유진이 바로 1대1.','상대 피보는 못 따라오고, 상대 아라는 관여 못 한다. 상대 픽소랑 1대1.','민지는 주자마자 반대편 파포스트에 가 있는다.','픽소가 유진에게 나오면 민지에게, 민지 쪽으로 쏠리면 유진이 슈팅.'] },
 
-    { key:'attack-2v1', updated:'2026-09-12', group:'빌드업', tab:'공격 2대1', title:'공격은 2대1: 공 가진 사람 혼자 두지 않기',
+    { key:'gk-throw', updated:'2026-11-03', group:'공격 전개', tab:'골레이로 던지기', title:'골레이로 던지기 → 피보 → 아라',
+      players:[P('gk',US,'골레'),P('al',US,'아라'),P('fx',US,'픽소'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'골레')],
+      start:{gk:[10,38.6],al:[3,29],fx:[10,30],ar:[17,29],pv:[10,14], t1:[5,24],t2:[15,24],t3:[10,25],t4:[10,11.3],tg:[10,1.4]},
+      ball:[10,38.6],
+      steps:[
+        {title:'골레이로가 잡으면 빌드업 말고, 던질 수 있으면 바로 피보에게. 그 순간 아라들 출발', text:'골레이로가 공을 잡았을 때 <b>피보에게 던질 수 있으면 바로 던진다.</b> 공이 나가는 순간 <b>양쪽 아라가 동시에 앞으로 뛴다.</b>',
+         ball:[10,14.5], move:{al:[4,23],ar:[16,23],t1:[6,21],t2:[14,21]}},
+        {title:'피보는 등지고 버틴다. 아라들은 계속 들어온다', text:'피보는 상대 픽소를 <b>등진 채로 버틴다.</b> 아라들은 멈추지 말고 계속 들어온다.',
+         move:{al:[5,14],ar:[15,14],t1:[6.5,16.5],t2:[13.5,16.5]}},
+      ],
+      options:[
+        {key:'A', label:'A · 피보가 흘려줌', steps:[
+          {title:'피보가 옆으로 흘려준다', text:'피보가 등진 채로 버티다가 <b>뛰어 들어오는 아라에게 옆으로 흘려준다.</b>',
+           ball:[5.5,11.5], move:{al:[5.5,11.5]}},
+          {title:'아라 슈팅. 반대편 아라는 파포까지', text:'받은 아라가 <b>바로 슈팅.</b> 반대편 아라는 <b>파포스트까지 뛰어서</b> 흘러나오는 공을 줍는다.',
+           ball:[10.6,0.4], move:{ar:[12.8,3.6],t2:[13.4,7]}, lines:[['al',10.6,0.4,'shot']]},
+        ]},
+        {key:'B', label:'B · 피보 맞고 나옴', steps:[
+          {title:'피보 맞고 나온 공을 아라가', text:'피보가 못 잡고 <b>몸에 맞고 흘러나와도</b> 뛰어 들어온 아라가 바로 잡는다.',
+           ball:[14.5,11.5], move:{ar:[14.5,11.5]}},
+          {title:'아라 슈팅. 반대편 아라는 파포까지', text:'받은 아라가 <b>바로 슈팅.</b> 반대편 아라는 <b>파포스트까지 뛰어서</b> 흘러나오는 공을 줍는다.',
+           ball:[9.4,0.4], move:{al:[7.2,3.6],t1:[6.6,7]}, lines:[['ar',9.4,0.4,'shot']]},
+        ]},
+      ],
+      notes:['골레이로가 잡으면 빌드업 말고, 던질 수 있으면 바로 피보에게.','던지는 순간 양쪽 아라 출발, 멈추지 않고 계속 들어온다. 피보는 상대 픽소 등지고 버틴다.','피보가 옆으로 흘려주거나, 피보 맞고 나온 공을 아라가 잡아서 슈팅. 반대편 아라는 파포스트까지 뛴다.'] },
+
+    { key:'attack-2v1', updated:'2026-09-12', group:'공격 전개', tab:'공격 2대1', title:'공격은 2대1: 공 가진 사람 혼자 두지 않기',
       players:[P('gk',US,'골레'),P('fx',US,'픽소'),P('al',US,'아라'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'골레')],
       start:{gk:[10,38.6],fx:[10,33],al:[3,27],ar:[17,27],pv:[10,17], t1:[4.6,23.6],t2:[15.5,23],t3:[10,29.2],t4:[10,13],tg:[10,1.4]},
       ball:[3,27],
@@ -382,7 +382,7 @@
       ],
       notes:['연습한 빌드업이 그대로 나오진 않는다. 지킬 건 하나, 공 가진 사람을 혼자 두지 않기. 상대는 맨투맨으로 붙어 있다고 생각한다.','받을 각 3개: 픽소, 피보, 반대쪽 아라(안으로 들어오면서).','2대1이 기본. 주고 나면 서 있지 말고 빠져서 수비를 끌고 간다. 그래야 받은 사람이 편해진다.','빠질 때 오른쪽 아라도 도와주러 들어온다. 공 가진 사람은 왼쪽·오른쪽 두 옵션을 다 보고, 수비가 왼쪽을 너무 잘 따라가면 오른쪽으로.','왼쪽 아라에게 주면 오른쪽 아라는 파포스트로 뛴다.','언제 파고들지 같은 건 각자 센스. 틀만 지키면 된다.'] },
 
-    { key:'buildup-pivo', updated:'2026-11-03', group:'빌드업', tab:'빌드업: 피보 흘려주기', title:'빌드업(3-1): 아라 → 픽소 → 아라 → 피보 → 픽소 슈팅',
+    { key:'buildup-pivo', updated:'2026-11-03', group:'공격 전개', tab:'빌드업: 피보 흘려주기', title:'빌드업(3-1): 아라 → 픽소 → 아라 → 피보 → 픽소 슈팅',
       players:[P('gk',US,'골레'),P('al',US,'아라'),P('fx',US,'픽소'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'골레')],
       start:{gk:[10,38.6],al:[2.5,30],fx:[10,30],ar:[17.5,30],pv:[10,13], t1:[5.5,25],t2:[15,24],t3:[10,24],t4:[10,10.3],tg:[10,1.4]},
       ball:[2.5,30],
@@ -403,7 +403,7 @@
       ],
       notes:['먼저 3-1 라인. 아라 · 픽소 · 아라가 한 줄, 피보가 위.','왼쪽 아라 → 픽소. 픽소는 발바닥으로 왼쪽 아라 쪽으로 밀다가 아라에게 다시 주고, 아라 쪽으로 붙는 척하다가 라인으로 빠져 파라.','왼쪽 아라는 원터치로 피보에게.','픽소는 피보 쪽으로 틀지 않고 라인 따라 주욱 올라간다. 피보는 등지고 있다가 픽소 가는 길 앞, 지나치지 않을 곳으로 흘려주고, 픽소가 슈팅.','오른쪽 아라는 픽소가 파라로 빠질 때부터 올라가서 슈팅 때 파포스트에서 줍는다.','이때 왼쪽 아라는 픽소 자리 커버하러 가운데로 내려온다.'] },
 
-    { key:'drill-para', updated:'2026-09-12', group:'빌드업', tab:'빌드업: 파라→파포', title:'빌드업: 파라 → 서 → 반대쪽 → 파포',
+    { key:'drill-para', updated:'2026-09-12', group:'공격 전개', tab:'빌드업: 파라→파포', title:'빌드업: 파라 → 서 → 반대쪽 → 파포',
       players:[P('l',US,'왼쪽'),P('c',US,'가운데'),P('r',US,'오른쪽'),P('t4',THEM,''),P('t5',THEM,''),P('tg',THEM,'골레')],
       start:{l:[3.5,27],c:[10,28.5],r:[16.5,27], t4:[10,9.5],t5:[12,17.5],tg:[10,1.4]},
       ball:[10,28.5],
