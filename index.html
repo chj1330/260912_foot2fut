@@ -77,6 +77,9 @@
   .seg button[data-opt="B"]{background:rgba(120,190,255,.22)}
   .seg button[data-opt="B"].done{background:rgba(120,190,255,.5)}
   .seg button[data-opt="B"][aria-current="step"]{background:#8cc8ff;box-shadow:0 0 10px rgba(140,200,255,.6)}
+  .seg button[data-opt="C"]{background:rgba(94,227,161,.22)}
+  .seg button[data-opt="C"].done{background:rgba(94,227,161,.5)}
+  .seg button[data-opt="C"][aria-current="step"]{background:#5ee3a1;box-shadow:0 0 10px rgba(94,227,161,.6)}
   .opts{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:0 18px 10px}
   .opts-label{font-size:12px;color:var(--muted);margin-right:2px}
   .opts button{border:1px solid var(--edge2);background:var(--card2);color:var(--muted);border-radius:999px;height:32px;padding:0 12px;font:700 12.5px var(--font);cursor:pointer}
@@ -86,6 +89,7 @@
   .caption{padding:2px 2px 16px;min-height:96px}
   .caption .step-no{font-size:11.5px;font-weight:700;color:var(--us);letter-spacing:.12em}
   .caption .step-no.b{color:#8cc8ff}
+  .caption .step-no.c{color:#5ee3a1}
   .caption h3{font-weight:800;font-size:18.5px;margin:3px 0 6px;line-height:1.28;letter-spacing:-.01em;text-wrap:balance}
   .caption p{margin:0;color:#d5dcd2;font-size:14.5px;max-width:34em}
   .caption p b{color:var(--us);font-weight:700}
@@ -242,18 +246,70 @@
       ],
       notes:['옆으로 누운 Y. 골대 안으로 들어가지 말고 5m 선까지 나와서 앞에 둘이 선다.','앞1 왼쪽(골라인 쪽)은 지아가 본다. 가운데로 들어오는 공은 앞1이 발 뻗어 끊는다.','라인 쪽 상대에게 패스가 가면 앞2가 나간다. 달려들지 말고 슛 각과 안쪽 패스 각을 막는 자리로. 앞1도 슈팅각 안쪽으로 한 발. 가운데는 자리 지키고 자기 맨투맨만 확인.','골대 앞에서 등지는 상대는 몸싸움 말고 그 앞에 선다. 애매하면 밖으로 걷어낸다.','끝나면 지아가 잡아서 끝이 뛰는 앞 공간으로 던지고, 끝은 그대로 골레이로와 1대1.'] },
 
-    { key:'kickin-def', updated:'2026-11-03', group:'세트피스', tab:'우리 진영 킥인', title:'우리 진영 킥인: 피보 내려오고 반대 아라 올라가기',
+    { key:'kickin-def', updated:'2026-11-04', group:'세트피스', tab:'우리 진영 킥인', title:'우리 진영 킥인: 피보가 진짜 받을 것처럼, 판단은 공 가진 사람',
       players:[P('gk',US,'골레'),P('al',US,'아라'),P('fx',US,'픽소'),P('ar',US,'아라'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('t4',THEM,''),P('tg',THEM,'골레')],
       start:{gk:[10,38.6],al:[0.8,28],fx:[10,31],ar:[16.5,27],pv:[10,14], t1:[4,25.5],t2:[14,24],t3:[10,27.5],t4:[10,11.3],tg:[10,1.4]},
       ball:[0.8,28],
       steps:[
         {title:'우리 진영에서 우리 킥인. 그쪽 아라가 찬다', text:'우리 진영에서 킥인이 우리 공이면 <b>그쪽 아라가 킥인을 한다.</b>'},
-        {title:'피보는 라인까지 가로로 뛰었다가 라인 따라 아예 빠진다. 픽소는 올라가고, 반대편 아라는 돌아서 왼쪽 라인까지', text:'피보는 <b>라인까지 가로로 뛰어갔다가, 라인을 따라 킥인하는 아라를 지나쳐 아래까지 빠진다.</b> 붙어 있던 상대도 끌려 내려온다. 피보가 내려오니까 <b>픽소는 올라가고</b>, 동시에 반대편 아라는 <b>위로 올라갔다가 둥글게 돌아 왼쪽 라인까지 들어온다.</b>',
-         move:{pv:{to:[2.4,31],via:[1.2,14]},t4:{to:[4.2,27.5],via:[3,17]},fx:[10,22],t3:[9.5,19],ar:{to:[2,14],via:[16,6]},t2:{to:[5,16.5],via:[14,10]}}},
-        {title:'킥인은 라인 따라 길게. 피보는 픽소 자리로 복귀, 픽소는 반대편 위로', text:'킥인은 <b>라인을 따라 길게</b>, 라인에 붙은 아라가 받는다. 라인에서 떨어져 있으면 못 받는다. 그 사이 피보는 <b>원래 픽소 자리로 돌아가고</b>, 픽소는 <b>반대편 쪽으로 더 올라간다.</b>',
-         ball:[1.6,14.6], move:{pv:[10,31],t4:[9,28],fx:[13,14],t3:[12,11.5]}},
+        {title:'피보는 사이드로 내려와서 진짜 받을 것처럼', text:'피보가 <b>킥인하는 쪽 사이드라인으로 내려온다.</b> 진짜 받을 것처럼 콜하고 손 들고. 상대도 따라 내려온다. 반대편 아라는 피보가 비운 위로 올라가기 시작, 픽소도 올라간다.',
+         move:{pv:[2.2,18],t4:[4,16],ar:[12,17],t2:[12.5,20],fx:[10,24],t3:[9.5,21.5]}},
+        {title:'피보가 "헤이헤이" 하고 반대 아라 자리로 빠진다', text:'피보는 받을 것처럼 하다가 <b>반대편 아라가 있던 자리로 확 빠진다.</b> 진짜 자기한테 줄 수도 있다고 생각하고 움직인다. <b>판단은 공 가진 사람이.</b> 수비가 피보를 따라가느냐 아니냐로 갈린다.',
+         move:{pv:[15.5,24],t2:[16,27]}, lines:[['al','pv','lane'],['al',1.4,12,'lane']]},
       ],
-      notes:['우리 진영 킥인이 우리 공이면 그쪽 아라가 찬다.','피보는 라인까지 가로로 뛰었다가 라인 따라 킥인하는 아라를 지나쳐 아래까지 빠지고, 원래 픽소 자리로 복귀. 픽소는 올라간다.','반대편 아라는 위로 라인 따라 올라갔다가 왼쪽 라인까지 돌아 들어오고, 킥인은 라인 따라 길게.'] },
+      options:[
+        {key:'A', label:'A · 수비가 피보를 따라감', steps:[
+          {title:'패스길이 열린다 → 아라는 확 사이드라인으로', text:'피보 붙던 수비가 따라가면 <b>라인 쪽 패스길이 열린다.</b> 아라는 <b>확 사이드라인으로 들어가서</b> 받는다.',
+           move:{t4:[13,21],ar:[1.4,12]}},
+          {title:'킥인은 라인 따라 아라에게', text:'<b>라인을 따라 길게</b> 아라에게. 피보는 다음 움직임 준비.',
+           ball:[1.6,12.6], move:{pv:[12,12],t2:[13,15]}},
+        ]},
+        {key:'B', label:'B · 수비가 안 따라감', steps:[
+          {title:'피보가 비어 있다 → 피보에게', text:'수비가 안 따라가면 <b>피보가 비어 있다.</b> 공 가진 사람은 피보에게 준다.',
+           ball:[15.5,24]},
+          {title:'그다음 움직임까지 생각한다', text:'피보에게 갈 걸 알고 <b>아라는 미리 앞으로 뛴다.</b> 피보는 받아서 바로 앞으로 연결.',
+           ball:[12,13], move:{ar:[11.5,12.5],t2:[12,15.5],pv:[14.5,19]}},
+        ]},
+      ],
+      notes:['우리 진영 킥인이 우리 공이면 그쪽 아라가 찬다.','피보는 사이드로 내려와서 진짜 받을 것처럼 하다가 반대 아라 자리로 빠진다. 진짜 줄 수도 있다고 생각하고 움직인다. 판단은 공 가진 사람.','수비가 피보를 따라가면 패스길이 열리니까 아라는 확 사이드라인으로. 킥인은 라인 따라.','안 따라가면 피보에게. 아라는 그다음 움직임(앞으로)까지 미리 생각.'] },
+
+    { key:'kickin-def-video', updated:'2026-11-04', group:'세트피스', tab:'우리 진영 킥인 전개', title:'우리 진영 킥인 전개: 안쪽 → 되돌림 → 세 가지',
+      players:[P('gk',US,'골레'),P('k',US,'킥'),P('n4',US,'안쪽'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t4',THEM,''),P('tg',THEM,'골레')],
+      start:{gk:[10,38.6],k:[0.8,29.4],n4:[12.3,29.4],pv:[8.6,9], t1:[5,25],t2:[12.5,26],t4:[8.6,6.5],tg:[10,1.4]},
+      ball:[0.8,29.4],
+      steps:[
+        {title:'킥인 → 안쪽 선수', text:'우리 진영 킥인. 같은 높이 안쪽에 있는 선수에게 <b>라인과 직각으로</b> 준다. 피보는 위에서 대기.',
+         ball:[12.3,29.4]},
+        {title:'안쪽 선수가 다시 라인으로 되돌린다', text:'킥인한 사람이 <b>안으로 한 발 들어오고</b>, 안쪽 선수는 <b>바로 되돌려준다.</b> 여기서 세 가지로 갈린다.',
+         ball:[2.6,28.5], move:{k:[2.6,28.5]}},
+      ],
+      options:[
+        {key:'A', label:'A · 대각선 + 파라', steps:[
+          {title:'킥인한 사람은 대각선으로 안쪽 드리블, 안쪽 선수는 라인 뒤로', text:'공 가진 사람이 <b>대각선으로 안쪽으로 끌고 간다.</b> 안쪽 선수는 <b>그 뒤로 돌아 라인 쪽으로</b> 내려온다.',
+           ball:[9,19], move:{k:[9,19],n4:{to:[2.4,22],via:[7,27]},t1:[7,21],t2:[6,24]}},
+          {title:'안쪽 선수가 라인 따라 파라로 올라간다', text:'공 가진 사람은 계속 안쪽으로, 안쪽 선수는 <b>라인을 따라 파라로 올라간다.</b>',
+           ball:[12.5,11], move:{k:[12.5,11],n4:[1.2,12],t1:[10.5,13],t2:[3.5,15]}},
+          {title:'라인으로 찔러준다', text:'<b>파라로 올라간 선수에게 라인으로 찔러준다.</b> 받아서 슈팅 또는 피보에게.',
+           ball:[1,9], move:{n4:[1,9.4]}, lines:[['n4','pv','lane']]},
+        ]},
+        {key:'B', label:'B · 라인 드리블 + 반대편 전진', steps:[
+          {title:'킥인한 사람이 라인 따라 드리블, 안쪽 선수는 반대편으로 같이 올라간다', text:'공 가진 사람이 <b>라인을 따라 드리블로 올라간다.</b> 안쪽 선수는 <b>반대편 라인 쪽으로 벌리면서 같이 올라간다.</b>',
+           ball:[2,20], move:{k:[2,20],n4:[14.5,20],t1:[4.5,17.5],t2:[13,17]}},
+          {title:'계속 올라간다. 피보와 반대편이 옵션', text:'<b>라인 끝까지 끌고 올라간다.</b> 피보와 반대편 선수가 받을 자리에 있다.',
+           ball:[1.6,9], move:{k:[1.6,9],n4:[14.5,8.8],t1:[4,10.5],t2:[13,11.5]}, lines:[['k','pv','lane'],['k','n4','lane']]},
+        ]},
+        {key:'C', label:'C · 피보와 2대1', steps:[
+          {title:'피보가 라인 쪽으로 내려온다', text:'공 가진 사람이 조금 끌고 올라오고, <b>피보는 라인 쪽으로 내려와서</b> 받을 자리로.',
+           ball:[4,23.5], move:{k:[4,23.5],pv:[0.8,10.6],t4:[3,9],t1:[6,20]}},
+          {title:'라인 따라 피보에게', text:'<b>라인을 따라 피보에게.</b>',
+           ball:[1,11]},
+          {title:'대각선으로 들어가며 되받는다 (2대1)', text:'준 사람은 <b>대각선으로 안쪽으로 뛰고</b>, 피보가 <b>안쪽으로 되돌려준다.</b> 2대1.',
+           ball:[8.6,8.6], move:{k:[9.4,11.5],t1:[7,14]}},
+          {title:'슈팅', text:'받은 사람이 <b>바로 슈팅.</b>',
+           ball:[10.4,0.4], lines:[['k',10.4,0.4,'shot']]},
+        ]},
+      ],
+      notes:['우리 진영 킥인 → 같은 높이 안쪽 선수 → 킥인한 사람이 안으로 들어와 되돌려 받는다. 여기까지 공통.','A: 공 가진 사람은 대각선으로 안쪽, 안쪽 선수는 라인 따라 파라로 올라가서 라인으로 받는다.','B: 공 가진 사람은 라인 따라 드리블 전진, 안쪽 선수는 반대편으로 벌리며 같이 올라간다.','C: 피보가 라인 쪽으로 내려와 받고, 준 사람이 대각선으로 들어가며 되받는 2대1.','영상 3개(11/4)를 옮긴 것. 선수 역할은 영상 기준이라 실제 포지션과 다를 수 있음.'] },
 
     { key:'kickin-shot', updated:'2026-11-03', group:'세트피스', tab:'상대 진영 킥인', title:'상대 진영 킥인: 살짝 밀어주고 바로 슈팅',
       players:[P('k',US,'킥'),P('sh',US,'슛'),P('fx',US,'픽소'),P('pv',US,'피보'),P('t1',THEM,''),P('t2',THEM,''),P('t3',THEM,''),P('tg',THEM,'골레')],
@@ -615,7 +671,7 @@
     const s=SCENES[sceneIdx], steps=stepsOf(s), n=steps.length;
     if(k<0){$('stepNo').className='step-no';$('stepNo').textContent=`${n}단계`;$('stepTitle').textContent='시작 배치';$('stepText').innerHTML='재생 또는 다음을 누르면 한 단계씩 움직입니다.'+(s.options?' A / B는 위 버튼으로.':'');}
     else{const st=steps[k], isOpt=s.options&&k>=s.steps.length, key=isOpt?s.options[optIdx].key:null;
-      $('stepNo').className='step-no'+(key==='B'?' b':'');
+      $('stepNo').className='step-no'+(key==='B'?' b':key==='C'?' c':'');
       $('stepNo').textContent=`STEP ${k+1} / ${n}`+(isOpt?` · 옵션 ${key}`:'');
       $('stepTitle').textContent=st.title;$('stepText').innerHTML=st.text;}
     [...seg.children].forEach((d,i)=>{d.removeAttribute('aria-current');d.classList.toggle('done',i<k);if(i===k)d.setAttribute('aria-current','step');});
