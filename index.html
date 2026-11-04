@@ -571,7 +571,7 @@
   let pos={}, ball=[10,20], nodes={}, ballNode=null, optIdx=0;
   const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   const BASE=reduce?700:800; // 움직임이 곧 내용이라 '동작 줄이기'여도 조금 짧게만
-  const SPEEDS=[1,1.5,2]; let speed=1;
+  const SPEEDS=[0.5,1,1.5,2]; let speed=1;
   try{const v=parseFloat(localStorage.getItem('f2f-speed'));if(SPEEDS.includes(v))speed=v;}catch(e){}
   const DUR=()=>BASE/speed;
   const EASE='cubic-bezier(.45,0,.2,1)';
